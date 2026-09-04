@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oyin — Responses</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+body{margin:0;background:#120a11;color:#fff;font-family:"DM Sans",sans-serif;padding:30px}.wrap{width:min(900px,100%);margin:auto}.card{background:#ffffff0d;border:1px solid #ffffff1b;border-radius:24px;padding:28px;backdrop-filter:blur(14px)}h1{margin-top:0}.sub{color:#cdbcc5}.row{display:flex;justify-content:space-between;gap:15px;align-items:center;border-top:1px solid #ffffff12;padding:18px 0}.answer{font-weight:700}.time{color:#bcaab4;font-size:.85rem}.refresh{border:0;border-radius:999px;padding:12px 18px;background:#ff709d;color:#fff;font-weight:700;cursor:pointer}.empty{text-align:center;padding:45px 10px;color:#cdbcc5}
+</style></head><body><div class="wrap"><div class="card"><h1>Oyin's Responses 💌</h1><p class="sub">Your private response dashboard.</p><button class="refresh" onclick="load()">Refresh</button><div id="list" class="empty">Loading…</div></div></div>
+<script>
+const API_URL="PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+async function load(){const el=document.getElementById("list");if(API_URL.includes("PASTE_YOUR")){el.innerHTML="<div class='empty'>Add your Google Apps Script Web App URL in this file first.</div>";return}
+try{const r=await fetch(API_URL+"?action=list");const data=await r.json();if(!data.length){el.innerHTML="<div class='empty'>No responses yet.</div>";return}
+el.innerHTML=data.reverse().map(x=>`<div class="row"><div><div class="answer">${escapeHtml(x.response)}</div><div class="time">${new Date(x.time).toLocaleString()}</div></div><div>❤️</div></div>`).join("")
+}catch(e){el.innerHTML="<div class='empty'>Could not load responses.</div>"}}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}load();
+</script></body></html>
