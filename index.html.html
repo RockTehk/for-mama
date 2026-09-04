@@ -46,7 +46,7 @@ button{font:600 1rem "DM Sans";border:0;border-radius:999px;padding:15px 24px;cu
 <div class="top" id="counter">1 / 4</div><div class="dots" id="dots"></div>
 <script>
 /* IMPORTANT: paste your deployed Google Apps Script Web App URL below. */
-const API_URL="PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const API_URL="https://script.google.com/macros/s/AKfycby5xFWS24lkTutEZzaFkUEN_tk8SYpixvH0zDH7U6NFfZm739BhSN3DKFKjEri_bbE0yQ/exec";
 const screens=[...document.querySelectorAll(".screen")], dots=document.getElementById("dots"), counter=document.getElementById("counter");
 let page=0, answer="";
 screens.forEach((_,i)=>{let d=document.createElement("span");d.className="dot"+(i===0?" on":"");dots.appendChild(d)});
